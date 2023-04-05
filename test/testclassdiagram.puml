@@ -1,0 +1,478 @@
+@startuml
+set namespaceSeparator ::
+
+class "iiui_transport_app::main.dart::MyApp" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "iiui_transport_app::main.dart::MyApp"
+
+class "iiui_transport_app::res::color.dart::AppColors" {
+  {static} +Color primaryColor
+  {static} +Color secondaryColor
+  {static} +Color primaryTextTextColor
+  {static} +Color secondaryTextColor
+  {static} +Color primaryIconColor
+  {static} +Color primaryButtonColor
+  {static} +Color successColor
+  {static} +Color iconBackgroundColor
+  {static} +Color inputTextBorderColor
+  {static} +Color hintColor
+  {static} +Color textFieldDefaultFocus
+  {static} +Color textFieldDefaultBorderColor
+  {static} +Color textFieldFocusBorderColor
+  {static} +Color alertColor
+  {static} +Color whiteColor
+  {static} +Color focusUnderLineColor
+  {static} +Color dividedColor
+  {static} +Color grayColor
+  {static} +Color dialogAlertBackgroundColor
+  {static} +Color lightGrayColor
+  {static} +Color otpBorderColor
+  {static} +Color otpFocusColor
+  {static} +Color otpBackgroundColor
+  {static} +Color otpHintColor
+  {static} +MaterialColor primaryMaterialColor
+}
+
+"iiui_transport_app::res::color.dart::AppColors" o-- "dart::ui::Color"
+"iiui_transport_app::res::color.dart::AppColors" o-- "flutter::src::material::colors.dart::MaterialColor"
+
+class "iiui_transport_app::res::components::input_text_field.dart::InputTextField" {
+  +TextEditingController myController
+  +FocusNode focusNode
+  +void Function(dynamic) onFiledSubmittedValue
+  +String? Function(dynamic) onValidator
+  +TextInputType keyBoardType
+  +String hint
+  +bool obsecureText
+  +bool enable
+  +bool autoFocus
+  +Widget prefixIcon
+  +Widget build()
+}
+
+"iiui_transport_app::res::components::input_text_field.dart::InputTextField" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"iiui_transport_app::res::components::input_text_field.dart::InputTextField" o-- "flutter::src::widgets::focus_manager.dart::FocusNode"
+"iiui_transport_app::res::components::input_text_field.dart::InputTextField" o-- "flutter::src::widgets::form.dart::void Function(dynamic)"
+"iiui_transport_app::res::components::input_text_field.dart::InputTextField" o-- "flutter::src::widgets::form.dart::String Function(dynamic)"
+"iiui_transport_app::res::components::input_text_field.dart::InputTextField" o-- "flutter::src::services::text_input.dart::TextInputType"
+"iiui_transport_app::res::components::input_text_field.dart::InputTextField" o-- "flutter::src::widgets::framework.dart::Widget"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "iiui_transport_app::res::components::input_text_field.dart::InputTextField"
+
+class "iiui_transport_app::res::components::navigationdrawerwidget.dart::NavigationDrawerWidget" {
+  +EdgeInsets Padding
+  +Widget build()
+}
+
+"iiui_transport_app::res::components::navigationdrawerwidget.dart::NavigationDrawerWidget" o-- "flutter::src::painting::edge_insets.dart::EdgeInsets"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "iiui_transport_app::res::components::navigationdrawerwidget.dart::NavigationDrawerWidget"
+
+class "iiui_transport_app::res::components::round_button.dart::RoundButton" {
+  +String title
+  +void Function() onPress
+  +Color color
+  +Color textColor
+  +bool loading
+  +Widget build()
+}
+
+"iiui_transport_app::res::components::round_button.dart::RoundButton" o-- "dart::ui::void Function()"
+"iiui_transport_app::res::components::round_button.dart::RoundButton" o-- "dart::ui::Color"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "iiui_transport_app::res::components::round_button.dart::RoundButton"
+
+class "iiui_transport_app::res::fonts.dart::AppFonts" {
+  {static} +String sfProDisplayBold
+  {static} +String sfProDisplayRegular
+  {static} +String sfProDisplayLight
+  {static} +String sfProDisplayMedium
+}
+
+class "iiui_transport_app::utils::routes::routes.dart::Routes" {
+  {static} +Route<dynamic> generateRoute()
+}
+
+class "iiui_transport_app::utils::routes::route_name.dart::RouteName" {
+  {static} +String splashScreen
+  {static} +String loginScreen
+  {static} +String signUpScreen
+  {static} +String forgotPassword
+  {static} +String homeScreen
+  {static} +String homeusedScreen
+  {static} +String profileScreen
+  {static} +String busdetailsScreen
+  {static} +String userlistScreen
+  {static} +String contactScreen
+  {static} +String cardScreen
+}
+
+class "iiui_transport_app::utils::utils.dart::Utils" {
+  {static} +void fieldFocus()
+  {static} +dynamic toastMessage()
+}
+
+class "iiui_transport_app::view::Bus%20Details::bus_details.dart::BusdetailsScreen" {
+  +State<BusdetailsScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "iiui_transport_app::view::Bus%20Details::bus_details.dart::BusdetailsScreen"
+
+class "iiui_transport_app::view::Bus%20Details::bus_details.dart::_BusdetailsScreenState" {
+  +Query ref
+  +DatabaseReference reference
+  +Widget listItem()
+  +Widget build()
+}
+
+"iiui_transport_app::view::Bus%20Details::bus_details.dart::_BusdetailsScreenState" o-- "firebase_database::firebase_database.dart::Query"
+"iiui_transport_app::view::Bus%20Details::bus_details.dart::_BusdetailsScreenState" o-- "firebase_database::firebase_database.dart::DatabaseReference"
+"flutter::src::widgets::framework.dart::State" <|-- "iiui_transport_app::view::Bus%20Details::bus_details.dart::_BusdetailsScreenState"
+
+class "iiui_transport_app::view::Card::card_screen.dart::CardScreen" {
+  +State<CardScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "iiui_transport_app::view::Card::card_screen.dart::CardScreen"
+
+class "iiui_transport_app::view::Card::card_screen.dart::_CardScreenState" {
+  +DatabaseReference ref
+  +Widget build()
+}
+
+"iiui_transport_app::view::Card::card_screen.dart::_CardScreenState" o-- "firebase_database::firebase_database.dart::DatabaseReference"
+"flutter::src::widgets::framework.dart::State" <|-- "iiui_transport_app::view::Card::card_screen.dart::_CardScreenState"
+
+class "iiui_transport_app::view::Card::card_screen.dart::ReusableRow" {
+  +String title
+  +String value
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "iiui_transport_app::view::Card::card_screen.dart::ReusableRow"
+
+class "iiui_transport_app::view::Card::incompletecardinfo_screen.dart::IncompleteDartScreen" {
+  +State<IncompleteDartScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "iiui_transport_app::view::Card::incompletecardinfo_screen.dart::IncompleteDartScreen"
+
+class "iiui_transport_app::view::Card::incompletecardinfo_screen.dart::_IncompleteDartScreenState" {
+  +FirebaseAuth auth
+  +Widget build()
+}
+
+"iiui_transport_app::view::Card::incompletecardinfo_screen.dart::_IncompleteDartScreenState" o-- "firebase_auth::firebase_auth.dart::FirebaseAuth"
+"flutter::src::widgets::framework.dart::State" <|-- "iiui_transport_app::view::Card::incompletecardinfo_screen.dart::_IncompleteDartScreenState"
+
+class "iiui_transport_app::view::Card::incompletecardinfo_screen.dart::ReusableRow" {
+  +String title
+  +String value
+  +IconData iconData
+  +Widget build()
+}
+
+"iiui_transport_app::view::Card::incompletecardinfo_screen.dart::ReusableRow" o-- "flutter::src::widgets::icon_data.dart::IconData"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "iiui_transport_app::view::Card::incompletecardinfo_screen.dart::ReusableRow"
+
+class "iiui_transport_app::view::Chat%20Screen::message_screen.dart::MessageScreen" {
+  +String image
+  +String name
+  +String email
+  +String recieverId
+  +State<MessageScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "iiui_transport_app::view::Chat%20Screen::message_screen.dart::MessageScreen"
+
+class "iiui_transport_app::view::Chat%20Screen::message_screen.dart::_MessageScreenState" {
+  +DatabaseReference ref
+  +TextEditingController MessageController
+  +Widget build()
+  +dynamic sendMessage()
+}
+
+"iiui_transport_app::view::Chat%20Screen::message_screen.dart::_MessageScreenState" o-- "firebase_database::firebase_database.dart::DatabaseReference"
+"iiui_transport_app::view::Chat%20Screen::message_screen.dart::_MessageScreenState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::State" <|-- "iiui_transport_app::view::Chat%20Screen::message_screen.dart::_MessageScreenState"
+
+class "iiui_transport_app::view::Contact::contact_screen.dart::ContactScreen" {
+  +State<ContactScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "iiui_transport_app::view::Contact::contact_screen.dart::ContactScreen"
+
+class "iiui_transport_app::view::Contact::contact_screen.dart::_ContactScreenState" {
+  +Widget listItem()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "iiui_transport_app::view::Contact::contact_screen.dart::_ContactScreenState"
+
+class "iiui_transport_app::view::Foregot%20Password::forgot_controller.dart::ForgotPasswordController" {
+  +FirebaseAuth auth
+  +DatabaseReference ref
+  -bool _loading
+  +bool loading
+  +dynamic setLoading()
+  +void forgot()
+}
+
+"iiui_transport_app::view::Foregot%20Password::forgot_controller.dart::ForgotPasswordController" o-- "firebase_auth::firebase_auth.dart::FirebaseAuth"
+"iiui_transport_app::view::Foregot%20Password::forgot_controller.dart::ForgotPasswordController" o-- "firebase_database::firebase_database.dart::DatabaseReference"
+
+
+class "iiui_transport_app::view::Foregot%20Password::forgot_password.dart::ForgotPassword" {
+  +State<ForgotPassword> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "iiui_transport_app::view::Foregot%20Password::forgot_password.dart::ForgotPassword"
+
+class "iiui_transport_app::view::Foregot%20Password::forgot_password.dart::_ForgotPasswordState" {
+  -GlobalKey<FormState> _formkey
+  +TextEditingController emailController
+  +FocusNode emailFocusNode
+  +void dispose()
+  +Widget build()
+}
+
+"iiui_transport_app::view::Foregot%20Password::forgot_password.dart::_ForgotPasswordState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"iiui_transport_app::view::Foregot%20Password::forgot_password.dart::_ForgotPasswordState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"iiui_transport_app::view::Foregot%20Password::forgot_password.dart::_ForgotPasswordState" o-- "flutter::src::widgets::focus_manager.dart::FocusNode"
+"flutter::src::widgets::framework.dart::State" <|-- "iiui_transport_app::view::Foregot%20Password::forgot_password.dart::_ForgotPasswordState"
+
+class "iiui_transport_app::view::HomeScreen::homeused_screen.dart::HomeUsedScreen" {
+  +State<HomeUsedScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "iiui_transport_app::view::HomeScreen::homeused_screen.dart::HomeUsedScreen"
+
+class "iiui_transport_app::view::HomeScreen::homeused_screen.dart::_HomeUsedScreenState" {
+  +DatabaseReference ref
+  +Widget build()
+}
+
+"iiui_transport_app::view::HomeScreen::homeused_screen.dart::_HomeUsedScreenState" o-- "firebase_database::firebase_database.dart::DatabaseReference"
+"flutter::src::widgets::framework.dart::State" <|-- "iiui_transport_app::view::HomeScreen::homeused_screen.dart::_HomeUsedScreenState"
+
+class "iiui_transport_app::view::HomeScreen::home_screen.dart::HomeScreen" {
+  +State<HomeScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "iiui_transport_app::view::HomeScreen::home_screen.dart::HomeScreen"
+
+class "iiui_transport_app::view::HomeScreen::home_screen.dart::_HomeScreenState" {
+  +PersistentTabController controller
+  -List<Widget> _buildScreen()
+  -List<PersistentBottomNavBarItem> _navBarItem()
+  +Widget build()
+}
+
+"iiui_transport_app::view::HomeScreen::home_screen.dart::_HomeScreenState" o-- "persistent_bottom_nav_bar::persistent_tab_view.dart::PersistentTabController"
+"flutter::src::widgets::framework.dart::State" <|-- "iiui_transport_app::view::HomeScreen::home_screen.dart::_HomeScreenState"
+
+class "iiui_transport_app::view::login::login_controller.dart::LoginController" {
+  +FirebaseAuth auth
+  +DatabaseReference ref
+  -bool _loading
+  +bool loading
+  +dynamic setLoading()
+  +void login()
+}
+
+"iiui_transport_app::view::login::login_controller.dart::LoginController" o-- "firebase_auth::firebase_auth.dart::FirebaseAuth"
+"iiui_transport_app::view::login::login_controller.dart::LoginController" o-- "firebase_database::firebase_database.dart::DatabaseReference"
+"flutter::src::foundation::change_notifier.dart::ChangeNotifier" <|-- "iiui_transport_app::view::login::login_controller.dart::LoginController"
+
+class "iiui_transport_app::view::login::login_screen.dart::LoginScreen" {
+  +State<LoginScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "iiui_transport_app::view::login::login_screen.dart::LoginScreen"
+
+class "iiui_transport_app::view::login::login_screen.dart::_loginScreenState" {
+  -GlobalKey<FormState> _formkey
+  +TextEditingController emailController
+  +TextEditingController passwordController
+  +FocusNode emailFocusNode
+  +FocusNode passwordFocusNode
+  +void dispose()
+  +Widget build()
+}
+
+"iiui_transport_app::view::login::login_screen.dart::_loginScreenState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"iiui_transport_app::view::login::login_screen.dart::_loginScreenState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"iiui_transport_app::view::login::login_screen.dart::_loginScreenState" o-- "flutter::src::widgets::focus_manager.dart::FocusNode"
+"flutter::src::widgets::framework.dart::State" <|-- "iiui_transport_app::view::login::login_screen.dart::_loginScreenState"
+
+class "iiui_transport_app::view::Profile%20Screen::profile_controller.dart::ProfileController" {
+  +DatabaseReference ref
+  +FirebaseStorage storage
+  +TextEditingController nameController
+  +TextEditingController phoneController
+  +TextEditingController regController
+  +TextEditingController degreeController
+  +TextEditingController samesterController
+  +TextEditingController busnumberController
+  +FocusNode nameFocusNode
+  +FocusNode phoneFocusNode
+  +FocusNode regFocusNode
+  +FocusNode degreeFocusNode
+  +FocusNode samesterFocusNode
+  +FocusNode busnumberFocusNode
+  +ImagePicker picker
+  -XFile? _image
+  -bool _loading
+  +XFile? image
+  +bool loading
+  +dynamic setLoading()
+  +Future<dynamic> pickGalleryImage()
+  +Future<dynamic> pickCameraImage()
+  +void pickImage()
+  +void uploadImage()
+  +Future<void> showUserNameDialogueAlert()
+  +Future<void> showPhoneDialogueAlert()
+  +Future<void> showRegDialogueAlert()
+  +void showdegreeDialogueAlert()
+  +void showsamesterDialogueAlert()
+  +void showbusnumberDialogueAlert()
+}
+
+"iiui_transport_app::view::Profile%20Screen::profile_controller.dart::ProfileController" o-- "firebase_database::firebase_database.dart::DatabaseReference"
+"iiui_transport_app::view::Profile%20Screen::profile_controller.dart::ProfileController" o-- "firebase_storage::firebase_storage.dart::FirebaseStorage"
+"iiui_transport_app::view::Profile%20Screen::profile_controller.dart::ProfileController" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"iiui_transport_app::view::Profile%20Screen::profile_controller.dart::ProfileController" o-- "flutter::src::widgets::focus_manager.dart::FocusNode"
+"iiui_transport_app::view::Profile%20Screen::profile_controller.dart::ProfileController" o-- "image_picker::image_picker.dart::ImagePicker"
+"iiui_transport_app::view::Profile%20Screen::profile_controller.dart::ProfileController" o-- "cross_file::src::types::interface.dart::XFile"
+"flutter::src::foundation::change_notifier.dart::ChangeNotifier" <|-- "iiui_transport_app::view::Profile%20Screen::profile_controller.dart::ProfileController"
+
+class "iiui_transport_app::view::Profile%20Screen::profile_screen.dart::ProfileSceen" {
+  +State<ProfileSceen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "iiui_transport_app::view::Profile%20Screen::profile_screen.dart::ProfileSceen"
+
+class "iiui_transport_app::view::Profile%20Screen::profile_screen.dart::_ProfileSceenState" {
+  +DatabaseReference ref
+  +FirebaseAuth auth
+  +Widget build()
+}
+
+"iiui_transport_app::view::Profile%20Screen::profile_screen.dart::_ProfileSceenState" o-- "firebase_database::firebase_database.dart::DatabaseReference"
+"iiui_transport_app::view::Profile%20Screen::profile_screen.dart::_ProfileSceenState" o-- "firebase_auth::firebase_auth.dart::FirebaseAuth"
+"flutter::src::widgets::framework.dart::State" <|-- "iiui_transport_app::view::Profile%20Screen::profile_screen.dart::_ProfileSceenState"
+
+class "iiui_transport_app::view::Profile%20Screen::profile_screen.dart::ReusableRow" {
+  +String title
+  +String value
+  +IconData iconData
+  +Widget build()
+}
+
+"iiui_transport_app::view::Profile%20Screen::profile_screen.dart::ReusableRow" o-- "flutter::src::widgets::icon_data.dart::IconData"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "iiui_transport_app::view::Profile%20Screen::profile_screen.dart::ReusableRow"
+
+class "iiui_transport_app::view::Services::session_manager.dart::SessionController" {
+  {static} -SessionController _session
+  +String? userId
+  +String? key
+}
+
+"iiui_transport_app::view::Services::session_manager.dart::SessionController" o-- "iiui_transport_app::view::Services::session_manager.dart::SessionController"
+
+class "iiui_transport_app::view::Services::splash_services.dart::SplashServices" {
+  +void isLogin()
+}
+
+class "iiui_transport_app::view::Settings::settings.dart::SettingsScreen" {
+  +State<SettingsScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "iiui_transport_app::view::Settings::settings.dart::SettingsScreen"
+
+class "iiui_transport_app::view::Settings::settings.dart::SettingScreenState" {
+  +DatabaseReference ref
+  +Widget build()
+}
+
+"iiui_transport_app::view::Settings::settings.dart::SettingScreenState" o-- "firebase_database::firebase_database.dart::DatabaseReference"
+"flutter::src::widgets::framework.dart::State" <|-- "iiui_transport_app::view::Settings::settings.dart::SettingScreenState"
+
+class "iiui_transport_app::view::Settings::settings.dart::ReusableRow" {
+  +String title
+  +String value
+  +IconData iconData
+  +Widget build()
+}
+
+"iiui_transport_app::view::Settings::settings.dart::ReusableRow" o-- "flutter::src::widgets::icon_data.dart::IconData"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "iiui_transport_app::view::Settings::settings.dart::ReusableRow"
+
+class "iiui_transport_app::view::signup::signup_controller.dart::SignupController" {
+  +FirebaseAuth auth
+  +DatabaseReference ref
+  -bool _loading
+  +bool loading
+  +dynamic setLoading()
+  +void signup()
+}
+
+"iiui_transport_app::view::signup::signup_controller.dart::SignupController" o-- "firebase_auth::firebase_auth.dart::FirebaseAuth"
+"iiui_transport_app::view::signup::signup_controller.dart::SignupController" o-- "firebase_database::firebase_database.dart::DatabaseReference"
+"flutter::src::foundation::change_notifier.dart::ChangeNotifier" <|-- "iiui_transport_app::view::signup::signup_controller.dart::SignupController"
+
+class "iiui_transport_app::view::signup::sign_up_screen.dart::SignupScreen" {
+  +State<SignupScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "iiui_transport_app::view::signup::sign_up_screen.dart::SignupScreen"
+
+class "iiui_transport_app::view::signup::sign_up_screen.dart::_SignupScreenState" {
+  -GlobalKey<FormState> _formkey
+  +TextEditingController usernameController
+  +TextEditingController emailController
+  +TextEditingController passwordController
+  +FocusNode usernameFocusNode
+  +FocusNode emailFocusNode
+  +FocusNode passwordFocusNode
+  +void dispose()
+  +Widget build()
+}
+
+"iiui_transport_app::view::signup::sign_up_screen.dart::_SignupScreenState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"iiui_transport_app::view::signup::sign_up_screen.dart::_SignupScreenState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"iiui_transport_app::view::signup::sign_up_screen.dart::_SignupScreenState" o-- "flutter::src::widgets::focus_manager.dart::FocusNode"
+"flutter::src::widgets::framework.dart::State" <|-- "iiui_transport_app::view::signup::sign_up_screen.dart::_SignupScreenState"
+
+class "iiui_transport_app::view::splash::splash_screen.dart::SplashScreen" {
+  +State<SplashScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "iiui_transport_app::view::splash::splash_screen.dart::SplashScreen"
+
+class "iiui_transport_app::view::splash::splash_screen.dart::_SplashScreenState" {
+  +SplashServices services
+  +void initState()
+  +Widget build()
+}
+
+"iiui_transport_app::view::splash::splash_screen.dart::_SplashScreenState" o-- "iiui_transport_app::view::Services::splash_services.dart::SplashServices"
+"flutter::src::widgets::framework.dart::State" <|-- "iiui_transport_app::view::splash::splash_screen.dart::_SplashScreenState"
+
+class "iiui_transport_app::view::User%20List::userlist_screen.dart::UserlistScreen" {
+  +State<UserlistScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "iiui_transport_app::view::User%20List::userlist_screen.dart::UserlistScreen"
+
+class "iiui_transport_app::view::User%20List::userlist_screen.dart::_UserlistScreenState" {
+  +DatabaseReference ref
+  +FirebaseAuth auth
+  +Widget build()
+}
+
+"iiui_transport_app::view::User%20List::userlist_screen.dart::_UserlistScreenState" o-- "firebase_database::firebase_database.dart::DatabaseReference"
+"iiui_transport_app::view::User%20List::userlist_screen.dart::_UserlistScreenState" o-- "firebase_auth::firebase_auth.dart::FirebaseAuth"
+"flutter::src::widgets::framework.dart::State" <|-- "iiui_transport_app::view::User%20List::userlist_screen.dart::_UserlistScreenState"
+
+
+@enduml
